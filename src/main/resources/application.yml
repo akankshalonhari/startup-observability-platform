@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: unified-observability-platform
+  mvc:
+    problemdetails:
+      enabled: true
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+platform:
+  # "What changed within two hops of this alert in the last 7 days?"
+  scope-hops: 2
+  change-lookback: 7d
+  # How far before the first alert agents look for evidence
+  evidence-lookback: 2h
+  # Alerts join an incident when they are this close in the graph and in time
+  correlation-hops: 3
+  correlation-window: 30m
+  # Wait for the alert storm to settle before the supervisor writes the brief and pages
+  triage-hold-down: 2m
+  triage-interval-ms: 30000
+  # A candidate cause that recovered this long before symptoms stopped is a coincidence
+  contradiction-grace: 5m
+  demo:
+    # Seeds the Malaysia estate and the sgp-esx-prod-11 identity sample on startup
+    seed: true
+
+logging:
+  level:
+    com.semiconductorcompany.observability: INFO

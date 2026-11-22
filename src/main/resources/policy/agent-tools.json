@@ -1,0 +1,12 @@
+{
+  "tools": [
+    {"name": "agent.node",         "mode": "read",   "zones": ["L0", "L1", "L2", "L3"], "note": "graph lookup"},
+    {"name": "agent.nodesInScope", "mode": "read",   "zones": ["L0", "L1", "L2", "L3"], "note": "graph scope of the incident"},
+    {"name": "agent.outgoing",     "mode": "read",   "zones": ["L0", "L1", "L2", "L3"], "note": "graph edges"},
+    {"name": "agent.signals",      "mode": "read",   "zones": ["L0", "L1", "L2", "L3"], "note": "Mimir, Loki and Tempo queries"},
+    {"name": "agent.changes",      "mode": "read",   "zones": ["L0", "L1", "L2", "L3"], "note": "changes within N hops"},
+    {"name": "platform.raiseChangeRequest", "mode": "write", "zones": ["L1", "L2", "L3"],
+     "note": "creates a ServiceNow change request for human approval; never executes it"},
+    {"name": "platform.page",      "mode": "notify", "zones": [], "note": "PagerDuty page to a human rotation"}
+  ]
+}
